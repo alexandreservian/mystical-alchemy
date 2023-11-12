@@ -3,15 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Transform raycastOrigin;
+    [SerializeField] private GraphicRaycaster graphicRaycaster;
 
     [SerializeField] private List<GameObject> cutLines = new List<GameObject>();
+
+    [SerializeField] private PointerEventData pointerEventData;
+    [SerializeField] private EventSystem eventSystem;
+
+    void Start()
+    {
+        eventSystem = GetComponent<EventSystem>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -29,32 +38,38 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
-
-        // Ensure that the raycastOrigin is not null before creating the ray
+        // Ensure that the raycastOrigin is not null before proceeding
         if (raycastOrigin != null)
         {
-            // Create a ray from the specified transform position
-            Ray ray = new Ray(raycastOrigin.position, raycastOrigin.forward);
+            // Create the PointerEventData with null for the EventSystem
+            pointerEventData = new PointerEventData(eventSystem);
 
-            // Create a raycast hit variable to store information about the hit
-            RaycastHit hit;
+            // Set the position of the PointerEventData to the position of the raycastOrigin
+            pointerEventData.position = raycastOrigin.position;
+            Debug.Log(pointerEventData.position);
 
-            // Check if the ray hits any UI element
-            if (Physics.Raycast(ray, out hit))
+            // Create a list to store the raycast results
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            // Raycast using the GraphicRaycaster
+            graphicRaycaster.Raycast(pointerEventData, results);
+
+            // Iterate through the results and handle interactions with UI elements
+            foreach (RaycastResult result in results)
             {
                 // Perform actions based on the UI element hit
-                if (hit.collider != null)
-                {
-                    // If a UI element is hit, you can get its information and perform necessary actions
-                    Debug.Log("UI Element Hit: " + hit.collider.gameObject.name);
+                GameObject hitObject = result.gameObject;
+                Debug.Log("UI Element Hit: " + hitObject.name);
 
-                    // Add your specific actions here for when a UI element is hit
-                }
+                // Add your specific actions here for when a UI element is hit
+                // You can access the hitObject and perform relevant operations
             }
         }
 
+        // Set canvasGroup.blocksRaycasts to true if needed
         canvasGroup.blocksRaycasts = true;
+
+        // Call the DisableCutLines method if needed
         DisableCutLines();
     }
 
