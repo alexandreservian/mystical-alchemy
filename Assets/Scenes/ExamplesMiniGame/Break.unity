@@ -637,7 +637,8 @@ MonoBehaviour:
   sliderBar: {fileID: 337351217}
   sliderBarSprite: {fileID: 337351219}
   numberOfHits: 3
-  duration: 1.5
+  durationPivot: 1.5
+  durationSliderBar: 0.2
 --- !u!1 &1051023639
 GameObject:
   m_ObjectHideFlags: 0
