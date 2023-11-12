@@ -546,8 +546,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830c80f2c0ba1403b8f196536e9f8df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bar: {fileID: 1051023641}
+  indicateBreak: {fileID: 407148219}
   pivot: {fileID: 570480225}
-  duration: 0.692
+  duration: 1.5
 --- !u!1 &1051023639
 GameObject:
   m_ObjectHideFlags: 0
