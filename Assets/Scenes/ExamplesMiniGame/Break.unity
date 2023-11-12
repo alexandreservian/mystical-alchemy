@@ -441,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 570480225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0169, y: 0.2361, z: 0}
+  m_LocalPosition: {x: -0.0169, y: 0.797, z: 0}
   m_LocalScale: {x: 0.96584076, y: 0.5333589, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -547,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 570480225}
+  duration: 0.692
 --- !u!1 &1051023639
 GameObject:
   m_ObjectHideFlags: 0
