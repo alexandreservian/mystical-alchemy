@@ -11,7 +11,7 @@
                     "id": "cdf91930-a145-4ad4-9ba0-c2ba3db712f1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -40,6 +40,17 @@
                     "name": "",
                     "id": "0b710744-703a-42c3-b102-2a5fe9ee781c",
                     "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae49c2ca-bfad-4e6c-8089-4ea88e75674d",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

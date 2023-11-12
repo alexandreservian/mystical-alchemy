@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
     }
 
     private void Update() {
-        isPressedTouch = _pressTouch.IsPressed();
+        isPressedTouch = _pressTouch.WasPerformedThisFrame();
         positionTouch = _moveTouch.ReadValue<Vector2>();
     }
 }

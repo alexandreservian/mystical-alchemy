@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f643f8f106db84eec855118cbf65cc50
+guid: c494c07f370e74ea29f782124a0ede06
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bar-break-Sheet_0
+      name: bar-break-Sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d15bffb864ce44e99f000c2eb809e18
-      internalID: -2020664865
+      spriteID: f7a803575ab2f4f2596570717d23c780
+      internalID: -33587176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bar-break-Sheet_1
+      name: bar-break-Sheet 1_1
       rect:
         serializedVersion: 2
         x: 14
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5612a6dc3df14f43ae13afe04ba772f
-      internalID: -483209280
+      spriteID: 226be1c1cea5c49de83424179310f0b1
+      internalID: -1151878743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bar-break-Sheet_2
+      name: bar-break-Sheet 1_2
       rect:
         serializedVersion: 2
         x: 37
@@ -205,8 +205,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5da0fc8a9f033466ea3e60fa4561b10e
-      internalID: -2076751942
+      spriteID: 2ba1606ba1a22420ea3cc4071b202eee
+      internalID: 1557794007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bar-break-Sheet 1_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 133
+        width: 14
+        height: 6
+      alignment: 9
+      pivot: {x: 0.5, y: -0.00030517578}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd35de47b11c4bf0ba7d2c5f6380dce
+      internalID: 1258353734
       vertices: []
       indices: 
       edges: []
@@ -222,9 +243,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bar-break-Sheet_0: 837541754
-      bar-break-Sheet_1: -1098455472
-      bar-break-Sheet_2: -2020664865
+      bar-break-Sheet 1_0: -33587176
+      bar-break-Sheet 1_1: -1151878743
+      bar-break-Sheet 1_2: 1557794007
+      bar-break-Sheet 1_3: 1258353734
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
