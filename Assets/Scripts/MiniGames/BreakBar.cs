@@ -18,6 +18,9 @@ public class BreakBar : MonoBehaviour
     private float limitIndicateBreakTop;
     private float limitIndicateBreakBottom;
     private float multipleScaleSliderBar;
+    private float sizeSliderBar = 0;
+    private int successHits = 0;
+    private int failedAttempts = 0;
     void Start()
     {
         var multipleScalar = (bar.bounds.size.y / sliderBarSprite.bounds.size.y) / numberOfHits;
@@ -27,17 +30,22 @@ public class BreakBar : MonoBehaviour
         sliderBar.transform.localScale = new Vector3(1,0,0);
         var endPosition = bar.bounds.min.y + 0.11f;
         pivot.transform.DOMoveY(endPosition, durationPivot).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        sliderBar.transform.DOScaleY(sizeSliderBar, durationSliderBar);
     }
 
     private void Update() {
         var positionPivotY = pivot.transform.position.y;
         var isInsideLimit = positionPivotY <= limitIndicateBreakTop && positionPivotY >= limitIndicateBreakBottom;
-        if (InputManager.instance.isPressedTouch) {
+        var limitHits = successHits != numberOfHits;
+        if (InputManager.instance.isPressedTouch && limitHits) {
             if(isInsideLimit) {
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
+                successHits++;
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
+                successHits = 0;
+                failedAttempts++;
             }
         }
     }
