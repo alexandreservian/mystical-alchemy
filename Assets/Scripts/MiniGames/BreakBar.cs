@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class BreakBar : MonoBehaviour
     [SerializeField] private GameObject pivot;
     [SerializeField] private GameObject sliderBar;
     [SerializeField] private SpriteRenderer sliderBarSprite;
+    [SerializeField] private GameObject egg;
     [Header("Mini Game Settings:")]
     [SerializeField] [Range(3, 6)] private int numberOfHits = 3;
     [Header("Pivot Settings:")]
@@ -21,6 +23,7 @@ public class BreakBar : MonoBehaviour
     private float sizeSliderBar = 0;
     private int successHits = 0;
     private int failedAttempts = 0;
+    public static event Action OnSuccessBreak;
     void Start()
     {
         var multipleScalar = (bar.bounds.size.y / sliderBarSprite.bounds.size.y) / numberOfHits;
@@ -42,11 +45,23 @@ public class BreakBar : MonoBehaviour
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
                 successHits++;
+                if(successHits<numberOfHits){
+                }
+                egg.transform.DOMoveX(1.3f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
                 successHits = 0;
                 failedAttempts++;
             }
+            if(successHits==numberOfHits){
+                OnSuccessBreak.Invoke();
+            }
         }
+    }
+
+    public void NextStep() {
+        transform.DOMoveX(-9f, 0.5f).SetEase(Ease.OutSine).OnComplete(() => {
+            gameObject.SetActive(false);
+        });
     }
 }
