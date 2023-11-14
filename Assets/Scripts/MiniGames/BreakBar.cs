@@ -51,7 +51,7 @@ public class BreakBar : MonoBehaviour
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
                 successHits = 0;
-                failedAttempts++;
+                MiniGamesManager.OnFail?.Invoke();
             }
             if(successHits==numberOfHits){
                 OnSuccessBreak.Invoke();

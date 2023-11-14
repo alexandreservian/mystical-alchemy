@@ -17,6 +17,10 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     [SerializeField] private PointerEventData pointerEventData;
     [SerializeField] private EventSystem eventSystem;
 
+    public static Action OnCutSucceeded;
+
+    private float successCount = 0;
+
     void Start()
     {
         eventSystem = GetComponent<EventSystem>();
@@ -61,8 +65,25 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
                 GameObject hitObject = result.gameObject;
                 Debug.Log("UI Element Hit: " + hitObject.name);
 
-                // Add your specific actions here for when a UI element is hit
-                // You can access the hitObject and perform relevant operations
+                if (result.gameObject.CompareTag("Success"))
+                {
+                    //Succeed objective
+                    successCount++;
+                    break;
+                }
+            }
+            if(successCount > 0)
+            {
+                successCount = 0;
+
+                OnCutSucceeded?.Invoke();
+                enabled = false;
+                Debug.Log("Success");
+            }
+            else
+            {
+                MiniGamesManager.OnFail?.Invoke();
+                Debug.Log("Fail");
             }
         }
 
@@ -75,7 +96,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //Debug.Log("OnPointerDown");
+        Debug.Log("OnPointerDown");
     }
 
     private void EnableCutLines()
