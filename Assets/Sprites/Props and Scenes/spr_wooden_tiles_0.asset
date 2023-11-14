@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: spr_wooden_tiles_0
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -1300846765, guid: bdce728561e1341f3bd4a5ebda7000e8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_Transform:
     e00: 1
     e01: 0
