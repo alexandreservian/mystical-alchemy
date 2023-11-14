@@ -17,6 +17,14 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     [SerializeField] private PointerEventData pointerEventData;
     [SerializeField] private EventSystem eventSystem;
 
+    [SerializeField] private Sprite normalKnife;
+    [SerializeField] private Sprite highlightedKnife;
+
+    [SerializeField] private Image knifeSprite;
+
+    [SerializeField] private Animator animator;
+
+
     public static Action OnCutSucceeded;
 
     private float successCount = 0;
@@ -31,6 +39,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         //Debug.Log("OnBeginDrag");
 
         canvasGroup.blocksRaycasts = false;
+        knifeSprite.sprite = highlightedKnife;
         EnableCutLines();
     }
 
@@ -42,6 +51,8 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        knifeSprite.sprite = normalKnife;
+
         // Ensure that the raycastOrigin is not null before proceeding
         if (raycastOrigin != null)
         {
@@ -76,6 +87,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             {
                 successCount = 0;
 
+                animator.enabled = true;
                 OnCutSucceeded?.Invoke();
                 enabled = false;
                 Debug.Log("Success");
