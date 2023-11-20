@@ -47,7 +47,7 @@ public class BreakBar : MonoBehaviour
                 successHits++;
                 if(successHits<numberOfHits){
                 }
-                egg.transform.DOMoveX(1.3f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                egg.transform.DOMoveX(0.9f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
                 successHits = 0;
