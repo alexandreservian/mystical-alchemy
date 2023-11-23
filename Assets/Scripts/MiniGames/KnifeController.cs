@@ -45,8 +45,11 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnDrag");
-        rectTransform.anchoredPosition += eventData.delta;
+        Vector2 localPointerPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out localPointerPosition);
+
+        Vector3 newPosition = rectTransform.localPosition + new Vector3(localPointerPosition.x, localPointerPosition.y, 0);
+        rectTransform.localPosition = newPosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
