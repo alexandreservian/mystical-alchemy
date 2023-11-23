@@ -30,7 +30,7 @@ public class BreakBar : MonoBehaviour
         limitIndicateBreakTop = indicateBreak.bounds.max.y;
         limitIndicateBreakBottom = indicateBreak.bounds.min.y;
         multipleScaleSliderBar = Mathf.Floor(multipleScalar * 100.0f) / 100.0f;
-        sliderBar.transform.localScale = new Vector3(1,0,0);
+        sliderBar.transform.localScale = new Vector3(sliderBar.transform.localScale.x,0,0);
         var endPosition = bar.bounds.min.y + 0.11f;
         pivot.transform.DOMoveY(endPosition, durationPivot).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         sliderBar.transform.DOScaleY(sizeSliderBar, durationSliderBar);
@@ -47,7 +47,9 @@ public class BreakBar : MonoBehaviour
                 successHits++;
                 if(successHits<numberOfHits){
                 }
-                egg.transform.DOMoveX(1.3f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                egg.transform.DOMoveX(0.9f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+
+                SoundManager.Instance.PlaySfx("Egg Broken");
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
                 successHits = 0;
