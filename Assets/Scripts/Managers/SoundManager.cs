@@ -22,6 +22,10 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    void Start() {
+        PlayMusic("Main Theme");
+    }
+
     public void PlayMusic(string soundName) {
         Sound sound = sounds.Find(s => s.name == soundName);
 

@@ -48,6 +48,8 @@ public class BreakBar : MonoBehaviour
                 if(successHits<numberOfHits){
                 }
                 egg.transform.DOMoveX(0.9f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+
+                SoundManager.Instance.PlaySfx("Egg Broken");
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
                 successHits = 0;
