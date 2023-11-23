@@ -87,6 +87,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             {
                 successCount = 0;
 
+                SoundManager.Instance.PlaySfx("Knife Cut");
                 animator.enabled = true;
                 OnCutSucceeded?.Invoke();
                 enabled = false;
