@@ -2822,10 +2822,6 @@ PrefabInstance:
       value: -------SceneManagers-------
       objectReference: {fileID: 0}
     - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
-      propertyPath: goldStar
-      value: 
-      objectReference: {fileID: -469187061, guid: 5cf10a37bea874f94b52368d75686449, type: 3}
-    - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
       propertyPath: hudCanvas
       value: 
       objectReference: {fileID: 2053331463}
@@ -2857,10 +2853,6 @@ PrefabInstance:
       propertyPath: restartStageButton
       value: 
       objectReference: {fileID: 1281827857}
-    - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
-      propertyPath: threeStarsMaxErrors
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
       propertyPath: miniGameList.Array.data[0]
       value: 

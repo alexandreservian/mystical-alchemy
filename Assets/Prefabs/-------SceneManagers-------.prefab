@@ -46,9 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextMiniGameButton: {fileID: 0}
   endStageButton: {fileID: 0}
+  restartStageButton: {fileID: 0}
+  menuButton: {fileID: 0}
+  endGameCanvas: {fileID: 0}
+  hudCanvas: {fileID: 0}
   miniGameList:
   - {fileID: 0}
   - {fileID: 0}
+  twoStarsMaxErrors: 1
+  threeStarsMaxErrors: 0
+  goldStar: {fileID: -469187061, guid: 5cf10a37bea874f94b52368d75686449, type: 3}
+  twoStarsImage: {fileID: 0}
+  threeStarsImage: {fileID: 0}
 --- !u!1 &6701997844383683312
 GameObject:
   m_ObjectHideFlags: 0
