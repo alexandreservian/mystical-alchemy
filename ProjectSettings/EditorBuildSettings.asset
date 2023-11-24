@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu/Credits.unity
     guid: 335d8f090a8e34d209ef31899708a00f
   - enabled: 1
-    path: Assets/Scenes/Recipes/RecipeOne.unity
-    guid: 6537fb93312ab47e2a2f90e0fabeaebb
-  - enabled: 1
     path: Assets/Scenes/Recipes/RecipesMenu.unity
     guid: ab13639f8585a48bfa42a131261ade68
+  - enabled: 1
+    path: Assets/Scenes/Recipes/RecipeOne.unity
+    guid: 6537fb93312ab47e2a2f90e0fabeaebb
   m_configObjects: {}

@@ -11,11 +11,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame() {
-        SceneManager.LoadScene(4);
+    public void RestartStage()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GoToRecipiesMenu() {
+        SceneManager.LoadScene(3);
     }
 
     public void RecipeOne() {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
+
+    public void NextStage()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
 }

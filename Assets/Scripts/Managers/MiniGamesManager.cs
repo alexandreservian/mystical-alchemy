@@ -1,49 +1,96 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MiniGamesManager : MonoBehaviour
 {
-    [SerializeField] private Button nextButton;
-    [SerializeField] private GameObject breakMinigame;
-    [SerializeField] private GameObject cutMinigame;
+    [Header("Canvas")]
+    [SerializeField] private Button nextMiniGameButton;
+    [SerializeField] private Button endStageButton;
+    [SerializeField] private Button restartStageButton;
+    [SerializeField] private Button menuButton;
+    [SerializeField] private GameObject endGameCanvas;
+    [SerializeField] private GameObject hudCanvas;
+    
+    [Header("MiniGames")]
+    [SerializeField] private List<GameObject> miniGameList = new ();
+    [SerializeField] private int twoStarsMaxErrors = 1;
+    [SerializeField] private int threeStarsMaxErrors = 0;
 
+    [Header("Endgame Score")]
+    [SerializeField] private Sprite goldStar;
+    [SerializeField] private Image twoStarsImage;
+    [SerializeField] private Image threeStarsImage;
+
+    //Events
+    public static Action OnSuccess;
     public static Action OnFail;
 
+    //Counters
     private int failCount = 0;
+    private int successCount = 0;
 
     void Start()
     {
-        BreakBar.OnSuccessBreak += OnSuccessBreak;
-        KnifeController.OnCutSucceeded += OnSuccessCut;
-        OnFail += () => failCount++;
+        OnFail = null;
+        OnSuccess = null;
+
+        OnFail += () =>
+        {
+            failCount++;
+            Debug.Log($"Failed {failCount} times");
+        };
+        OnSuccess += () => SucceedMiniGame();
+
+        nextMiniGameButton.onClick.AddListener(() =>
+        {
+            miniGameList[successCount -1].SetActive(false);
+            miniGameList[successCount].SetActive(true);
+            nextMiniGameButton.gameObject.SetActive(false);
+        });
+
+        restartStageButton.onClick.AddListener(() =>
+        {
+            GameManager.instance.RestartStage();
+        });
+
+        menuButton.onClick.AddListener(() =>
+        {
+            GameManager.instance.GoToRecipiesMenu();
+        });
+
+        endStageButton.onClick.AddListener(() => GameManager.instance.GoToRecipiesMenu());
     }
 
-    void OnSuccessBreak()
+    private void SucceedMiniGame()
     {
-        BreakBar.OnSuccessBreak -= OnSuccessBreak;
-        nextButton.gameObject.SetActive(true);
-        nextButton.onClick.AddListener(() =>
+        successCount++;
+        if (miniGameList.Count <= successCount)
         {
-            breakMinigame.SetActive(false);
-            cutMinigame.SetActive(true);
-            nextButton.gameObject.SetActive(false);
-        });
+            OnEndMiniGame();
+            return;
+        }
+        ProceedMiniGame();
     }
 
-    void OnSuccessCut()
+    void ProceedMiniGame()
     {
-        KnifeController.OnCutSucceeded -= OnSuccessCut;
-        nextButton.gameObject.SetActive(true);
-        nextButton.onClick.RemoveAllListeners();
-        nextButton.onClick.AddListener(() =>
-        {
-            GameManager.instance.StartGame();
-            Debug.Log($"Game Succeeded with {failCount} fails");
-            // End of the level
-        });
+        nextMiniGameButton.gameObject.SetActive(true);
+    }
+
+    void OnEndMiniGame()
+    {
+        nextMiniGameButton.onClick.RemoveAllListeners();
+        endGameCanvas.SetActive(true);
+        hudCanvas.SetActive(false);
+        OnFail = null;
+        OnSuccess = null;
+        if (failCount <= twoStarsMaxErrors) twoStarsImage.sprite = goldStar;
+        if (failCount <= threeStarsMaxErrors) threeStarsImage.sprite = goldStar;
+
     }
 
 }

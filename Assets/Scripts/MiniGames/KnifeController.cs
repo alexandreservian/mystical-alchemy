@@ -24,9 +24,6 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     [SerializeField] private Animator animator;
 
-
-    public static Action OnCutSucceeded;
-
     private float successCount = 0;
 
     void Start()
@@ -92,14 +89,12 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
                 SoundManager.Instance.PlaySfx("Knife Cut");
                 animator.enabled = true;
-                OnCutSucceeded?.Invoke();
+                MiniGamesManager.OnSuccess.Invoke();
                 enabled = false;
-                Debug.Log("Success");
             }
             else
             {
                 MiniGamesManager.OnFail?.Invoke();
-                Debug.Log("Fail");
             }
         }
 

@@ -22,8 +22,7 @@ public class BreakBar : MonoBehaviour
     private float multipleScaleSliderBar;
     private float sizeSliderBar = 0;
     private int successHits = 0;
-    private int failedAttempts = 0;
-    public static event Action OnSuccessBreak;
+
     void Start()
     {
         var multipleScalar = (bar.bounds.size.y / sliderBarSprite.bounds.size.y) / numberOfHits;
@@ -40,13 +39,12 @@ public class BreakBar : MonoBehaviour
         var positionPivotY = pivot.transform.position.y;
         var isInsideLimit = positionPivotY <= limitIndicateBreakTop && positionPivotY >= limitIndicateBreakBottom;
         var limitHits = successHits != numberOfHits;
+        if (successHits > numberOfHits) return;
         if (InputManager.instance.isPressedTouch && limitHits) {
             if(isInsideLimit) {
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
                 successHits++;
-                if(successHits<numberOfHits){
-                }
                 egg.transform.DOMoveX(0.9f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
 
                 SoundManager.Instance.PlaySfx("Egg Broken");
@@ -56,7 +54,7 @@ public class BreakBar : MonoBehaviour
                 MiniGamesManager.OnFail?.Invoke();
             }
             if(successHits==numberOfHits){
-                OnSuccessBreak.Invoke();
+                MiniGamesManager.OnSuccess.Invoke();
             }
         }
     }
