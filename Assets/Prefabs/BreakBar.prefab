@@ -433,6 +433,7 @@ MonoBehaviour:
   - {fileID: -473922938, guid: 4bed1900cc2ac4f61acfe22cf7a78f42, type: 3}
   - {fileID: 483836200, guid: 4bed1900cc2ac4f61acfe22cf7a78f42, type: 3}
   - {fileID: -1420595597, guid: 4bed1900cc2ac4f61acfe22cf7a78f42, type: 3}
+  stepsEggBreak: {fileID: 833875861, guid: 95d8c13521ea54bb58f9cbded95d591c, type: 3}
   numberOfHits: 3
   durationPivot: 1.5
   durationSliderBar: 0.2
