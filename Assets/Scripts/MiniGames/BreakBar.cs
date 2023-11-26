@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,7 +11,12 @@ public class BreakBar : MonoBehaviour
     [SerializeField] private GameObject pivot;
     [SerializeField] private GameObject sliderBar;
     [SerializeField] private SpriteRenderer sliderBarSprite;
+    [Header("Egg Settings:")]
     [SerializeField] private GameObject egg;
+    [SerializeField] private SpriteRenderer spriteEgg;
+    [SerializeField] private Sprite[] stepsEgg;
+    [SerializeField] private Sprite stepsEggBreak;
+    private Sprite cacheSpriteEgg;
     [Header("Mini Game Settings:")]
     [SerializeField] [Range(3, 6)] private int numberOfHits = 3;
     [Header("Pivot Settings:")]
@@ -33,6 +39,7 @@ public class BreakBar : MonoBehaviour
         var endPosition = bar.bounds.min.y + 0.11f;
         pivot.transform.DOMoveY(endPosition, durationPivot).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         sliderBar.transform.DOScaleY(sizeSliderBar, durationSliderBar);
+        cacheSpriteEgg = spriteEgg.sprite;
     }
 
     private void Update() {
@@ -44,17 +51,25 @@ public class BreakBar : MonoBehaviour
             if(isInsideLimit) {
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
+                spriteEgg.sprite = stepsEgg.Length == numberOfHits ? stepsEgg[successHits] : spriteEgg.sprite;
                 successHits++;
-                egg.transform.DOMoveX(0.9f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
-
+                egg.transform.DOMoveX(0.2f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
                 SoundManager.Instance.PlaySfx("Egg Broken");
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
+                spriteEgg.sprite = cacheSpriteEgg;
                 successHits = 0;
                 MiniGamesManager.OnFail?.Invoke();
             }
             if(successHits==numberOfHits){
-                MiniGamesManager.OnSuccess.Invoke();
+                egg.transform.DOKill();
+                egg.transform.DOMove(new Vector2(1.2f, -2f), 0.35f)
+                    .SetLoops(1)
+                    .SetEase(Ease.InOutSine)
+                    .OnComplete(() => {
+                        spriteEgg.sprite = stepsEggBreak;
+                        MiniGamesManager.OnSuccess.Invoke();
+                    });
             }
         }
     }
