@@ -42,4 +42,12 @@ public class SoundManager : MonoBehaviour
             sfxSounds.PlayOneShot(sound.audioClip);
         }
     }
+
+    public void Mute() {
+        musicSounds.mute = true;
+    }
+
+    public void Unmute() {
+        musicSounds.mute = false;
+    }
 }
