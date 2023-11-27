@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MiniGamesManager : MonoBehaviour
@@ -88,9 +89,26 @@ public class MiniGamesManager : MonoBehaviour
         hudCanvas.SetActive(false);
         OnFail = null;
         OnSuccess = null;
-        if (failCount <= twoStarsMaxErrors) twoStarsImage.sprite = goldStar;
-        if (failCount <= threeStarsMaxErrors) threeStarsImage.sprite = goldStar;
-
+        
+        if (failCount <= threeStarsMaxErrors)
+        {
+            twoStarsImage.sprite = goldStar;
+            threeStarsImage.sprite = goldStar;
+            SaveManager.SaveLevelsStars(SceneManager.GetActiveScene().buildIndex - 3, 3);
+        }
+        else if (failCount <= twoStarsMaxErrors)
+        {
+            twoStarsImage.sprite = goldStar;
+            if (PlayerPrefs.GetInt($"Level{SceneManager.GetActiveScene().buildIndex - 3}StarsCount", 0) > 2)
+                return;
+            SaveManager.SaveLevelsStars(SceneManager.GetActiveScene().buildIndex - 3, 2);
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt($"Level{SceneManager.GetActiveScene().buildIndex - 3}StarsCount", 0) > 1)
+                return;
+            SaveManager.SaveLevelsStars(SceneManager.GetActiveScene().buildIndex - 3, 1);
+        }
     }
 
 }

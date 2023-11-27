@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class MenuStarsRecipiesLoader : MonoBehaviour
 {
-    private List<Image> currentStarSprites = new();
+    private Image[] currentStarSprites;
 
-    [SerializeField] private Sprite goldenStar; 
-
-    public void SetStarsSprite(int stars = 0)
+    private void Awake()
     {
-        for(int i = 0; i <= stars; i++)
+        currentStarSprites = GetComponentsInChildren<Image>();
+    }
+
+    public void SetStarsSprite(Sprite goldenStar, int stars = 0)
+    {
+        for(int i = 1; i <= stars; i++)
         {
-            currentStarSprites[0].sprite = goldenStar;
+            currentStarSprites[i].sprite = goldenStar;
         }
     }
 }

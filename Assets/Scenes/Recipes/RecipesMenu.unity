@@ -419,6 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 784738352}
+  - component: {fileID: 784738353}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -441,6 +442,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 533410012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &784738353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784738351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c7c774e062894409d7a4358b4ff695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldenStar: {fileID: -469187061, guid: 5cf10a37bea874f94b52368d75686449, type: 3}
+  recipiesList:
+  - {fileID: 1102440075}
 --- !u!1 &963238252
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +678,7 @@ GameObject:
   - component: {fileID: 1102440074}
   - component: {fileID: 1102440073}
   - component: {fileID: 1102440072}
+  - component: {fileID: 1102440075}
   m_Layer: 5
   m_Name: Recipe 1
   m_TagString: Untagged
@@ -786,6 +803,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102440070}
   m_CullTransparentMesh: 1
+--- !u!114 &1102440075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102440070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5267ee9ea82d0224f8ab467bdd933c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1128550746
 GameObject:
   m_ObjectHideFlags: 0
