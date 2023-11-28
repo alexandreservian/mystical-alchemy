@@ -560,6 +560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4479968239931233840, guid: c9539931916bd45f0b05d7416777836e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1951,18 +1955,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cut
       objectReference: {fileID: 0}
-    - target: {fileID: 3693147471529668724, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6015620495025167262, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6015620495025167262, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1330181755
-      objectReference: {fileID: 0}
     - target: {fileID: 8823759810627195702, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 850.175
@@ -3052,6 +3044,10 @@ PrefabInstance:
       propertyPath: menuButton
       value: 
       objectReference: {fileID: 282269478}
+    - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
+      propertyPath: nextButton
+      value: 
+      objectReference: {fileID: 534572816}
     - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
       propertyPath: endGameCanvas
       value: 

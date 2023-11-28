@@ -15,6 +15,7 @@ public class MiniGamesManager : MonoBehaviour
     [SerializeField] private Button menuButton;
     [SerializeField] private GameObject endGameCanvas;
     [SerializeField] private GameObject hudCanvas;
+    [SerializeField] private GameObject nextButton;
     
     [Header("MiniGames")]
     [SerializeField] private List<GameObject> miniGameList = new ();
@@ -87,6 +88,12 @@ public class MiniGamesManager : MonoBehaviour
         nextMiniGameButton.onClick.RemoveAllListeners();
         endGameCanvas.SetActive(true);
         hudCanvas.SetActive(false);
+
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            ShowCreditsButton();
+        }
+
         OnFail = null;
         OnSuccess = null;
         
@@ -111,4 +118,11 @@ public class MiniGamesManager : MonoBehaviour
         }
     }
 
+    private void ShowCreditsButton()
+    {
+        nextButton.GetComponent<Button>().onClick.RemoveAllListeners();
+
+        //temp
+        nextButton.SetActive(false);
+    }
 }
