@@ -560,6 +560,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7313060745152468072, guid: c9539931916bd45f0b05d7416777836e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313060745152468072, guid: c9539931916bd45f0b05d7416777836e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 788155835
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878894533599899976, guid: c9539931916bd45f0b05d7416777836e, type: 3}
+      propertyPath: limitTimer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
