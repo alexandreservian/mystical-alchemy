@@ -22,11 +22,11 @@ public class MiniGamesManager : MonoBehaviour
     [SerializeField] private int twoStarsMaxErrors = 1;
     [SerializeField] private int threeStarsMaxErrors = 0;
 
-    [Header("Endgame Score")]
+    [Header("Endgame Score Canvas")]
     [SerializeField] private Sprite goldStar;
     [SerializeField] private Image twoStarsImage;
     [SerializeField] private Image threeStarsImage;
-
+    [SerializeField] private float delayToShowScreenSeconds = 1f;
     //Events
     public static Action OnSuccess;
     public static Action OnFail;
@@ -72,10 +72,16 @@ public class MiniGamesManager : MonoBehaviour
         successCount++;
         if (miniGameList.Count <= successCount)
         {
-            OnEndMiniGame();
+            StartCoroutine(OnEndMiniGameDelayed(delayToShowScreenSeconds));
             return;
         }
         ProceedMiniGame();
+    }
+
+    private IEnumerator OnEndMiniGameDelayed(float delayToShowScreenSeconds)
+    {
+        yield return new WaitForSecondsRealtime(delayToShowScreenSeconds);
+        OnEndMiniGame();
     }
 
     void ProceedMiniGame()
