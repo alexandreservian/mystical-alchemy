@@ -54,9 +54,13 @@ public class BreakBar : MonoBehaviour
             if(isInsideLimit && canDoAction) {
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
-                spriteEgg.sprite = stepsEgg.Length == numberOfHits ? stepsEgg[successHits] : spriteEgg.sprite;
                 successHits++;
-                egg.transform.DOMoveX(0.2f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                egg.transform.DOMoveX(0.2f, 0.35f)
+                    .SetLoops(2, LoopType.Yoyo)
+                    .SetEase(Ease.InOutSine)
+                    .OnStepComplete(() => {
+                        spriteEgg.sprite = stepsEgg.Length == numberOfHits ? stepsEgg[successHits] : spriteEgg.sprite;
+                    });
                 SoundManager.Instance.PlaySfx("Egg Broken");
                 StartCoroutine(WaitToBreakEgg());
             }else{
@@ -72,6 +76,7 @@ public class BreakBar : MonoBehaviour
                     .SetEase(Ease.InOutSine)
                     .OnComplete(() => {
                         spriteEgg.sprite = stepsEggBreak;
+                        SoundManager.Instance.PlaySfx("Finish Egg Broken");
                         MiniGamesManager.OnSuccess.Invoke();
                     });
             }
