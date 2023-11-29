@@ -9,13 +9,19 @@ public class UiMenu : MonoBehaviour
     [SerializeField] Ease ease = Ease.InQuad;
     [Header("Buttons Settings:")]
     [SerializeField] RectTransform buttonPlay;
+    [SerializeField] RectTransform buttonCredit;
+    [SerializeField] RectTransform footer;
     void Start()
     {
         plate.DOAnchorPosY(-219f, timeAnimation)
             .SetLoops(1, LoopType.Yoyo)
             .SetEase(ease)
             .OnComplete(() => {
-                buttonPlay.DOScale(new Vector3(1,1,1), timeAnimation);
+                footer.DOScale(new Vector3(1,1,1), timeAnimation);
+                buttonPlay.DOScale(new Vector3(1,1,1), timeAnimation)
+                    .OnComplete(() => {
+                        buttonCredit.DOScale(new Vector3(1,1,1), timeAnimation);
+                    });
             });
     }
 }
