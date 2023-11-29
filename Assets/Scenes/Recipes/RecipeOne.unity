@@ -560,6 +560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4479968239931233840, guid: c9539931916bd45f0b05d7416777836e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7313060745152468072, guid: c9539931916bd45f0b05d7416777836e, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -1965,6 +1969,10 @@ PrefabInstance:
     - target: {fileID: 3693147471529668724, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_Name
       value: Cut
+      objectReference: {fileID: 0}
+    - target: {fileID: 3693147471529668724, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8823759810627195702, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_LocalPosition.x

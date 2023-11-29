@@ -11,7 +11,7 @@ public class UIMenuCredits : MonoBehaviour
         var sequence = DOTween.Sequence();
 
         foreach (var member in members) {
-            sequence.Append(member.DOAnchorPosX(151.7f,0.5f)).SetEase(Ease.InQuad);
+            sequence.Append(member.DOAnchorPosX(151.7f,0.3f)).SetEase(Ease.InQuad);
         }
 
         sequence.OnComplete(() => {
