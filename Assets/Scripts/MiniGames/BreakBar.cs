@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -22,6 +23,9 @@ public class BreakBar : MonoBehaviour
     [SerializeField] [Range(0.5f, 1.5f)] private float durationPivot = 0.5f;
     [Header("Slider Bar Settings:")]
     [SerializeField] [Range(0.2f, 1f)] private float durationSliderBar = 1f;
+    [Header("Timer Settings:")]
+    [SerializeField] [Range(0.2f, 1f)] private float limitTimer = 1.0f;
+    private bool canDoAction = true;
     private float limitIndicateBreakTop;
     private float limitIndicateBreakBottom;
     private float multipleScaleSliderBar;
@@ -47,13 +51,18 @@ public class BreakBar : MonoBehaviour
         var limitHits = successHits != numberOfHits;
         if (successHits > numberOfHits) return;
         if (InputManager.instance.isPressedTouch && limitHits) {
-            if(isInsideLimit) {
+            if(isInsideLimit && canDoAction) {
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
-                spriteEgg.sprite = stepsEgg.Length == numberOfHits ? stepsEgg[successHits] : spriteEgg.sprite;
                 successHits++;
-                egg.transform.DOMoveX(0.2f, 0.35f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                egg.transform.DOMoveX(0.2f, 0.35f)
+                    .SetLoops(2, LoopType.Yoyo)
+                    .SetEase(Ease.InOutSine)
+                    .OnStepComplete(() => {
+                        spriteEgg.sprite = stepsEgg.Length == numberOfHits ? stepsEgg[successHits] : spriteEgg.sprite;
+                    });
                 SoundManager.Instance.PlaySfx("Egg Broken");
+                StartCoroutine(WaitToBreakEgg());
             }else{
                 sliderBar.transform.DOScaleY(0, durationSliderBar);
                 spriteEgg.sprite = cacheSpriteEgg;
@@ -67,10 +76,17 @@ public class BreakBar : MonoBehaviour
                     .SetEase(Ease.InOutSine)
                     .OnComplete(() => {
                         spriteEgg.sprite = stepsEggBreak;
+                        SoundManager.Instance.PlaySfx("Finish Egg Broken");
                         MiniGamesManager.OnSuccess.Invoke();
                     });
             }
         }
+    }
+
+    IEnumerator WaitToBreakEgg() {
+        canDoAction = false;
+        yield return new WaitForSeconds(limitTimer);
+        canDoAction = true;
     }
 
     public void NextStep() {

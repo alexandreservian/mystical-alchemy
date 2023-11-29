@@ -53,6 +53,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: dd337ee6299e448fb998aa6bad4eb23e, type: 3}
   - name: Knife Cut
     audioClip: {fileID: 8300000, guid: 57be55e4e3befb34292d692345c8efac, type: 3}
+  - name: Finish Egg Broken
+    audioClip: {fileID: 8300000, guid: c1b1f5da76ba647bb90e23dc26d632b9, type: 3}
   musicSounds: {fileID: 8452499360119567757}
   sfxSounds: {fileID: 4028444454962823465}
 --- !u!82 &8452499360119567757

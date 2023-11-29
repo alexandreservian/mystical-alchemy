@@ -29,4 +29,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void GoToCredit() {
+        SceneManager.LoadScene(2);
+    }
+
+    public void GoToMenu() {
+        SceneManager.LoadScene(0);
+    }
+
 }
