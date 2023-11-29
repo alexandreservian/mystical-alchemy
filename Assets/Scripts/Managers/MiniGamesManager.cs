@@ -65,6 +65,8 @@ public class MiniGamesManager : MonoBehaviour
         });
 
         endStageButton.onClick.AddListener(() => GameManager.instance.GoToRecipiesMenu());
+
+        miniGameList[0].SetActive(true);
     }
 
     private void SucceedMiniGame()

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private RectTransform knifeRectTransform;
+    [SerializeField] private RectTransform knifeShadowRectTransform;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Transform raycastOrigin;
     [SerializeField] private GraphicRaycaster graphicRaycaster;
@@ -22,7 +23,8 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     [SerializeField] private Image knifeSprite;
 
-    [SerializeField] private Animator animator;
+    private Animator knifeAnimator;
+    [SerializeField] private Animator ingredientAnimator;
 
     private float successCount = 0;
     private float failCount = 0;
@@ -30,6 +32,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     void Start()
     {
         eventSystem = GetComponent<EventSystem>();
+        knifeAnimator = GetComponent<Animator>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -43,11 +46,13 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnDrag(PointerEventData eventData)
     {
+        knifeAnimator.SetBool("isGrabbed", true);
         Vector2 localPointerPosition;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out localPointerPosition);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(knifeRectTransform, eventData.position, eventData.pressEventCamera, out localPointerPosition);
 
-        Vector3 newPosition = rectTransform.localPosition + new Vector3(localPointerPosition.x, localPointerPosition.y, 0);
-        rectTransform.localPosition = newPosition;
+        Vector3 newPosition = knifeRectTransform.localPosition + new Vector3(localPointerPosition.x, localPointerPosition.y, 0);
+        knifeRectTransform.localPosition = newPosition;
+        knifeShadowRectTransform.localPosition = newPosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -93,7 +98,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             if (successCount > 0)
             {
                 SoundManager.Instance.PlaySfx("Knife Cut");
-                animator.enabled = true;
+                ingredientAnimator.enabled = true;
                 MiniGamesManager.OnSuccess.Invoke();
                 enabled = false;
             }
@@ -101,6 +106,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             {
                 MiniGamesManager.OnFail?.Invoke();
             }
+
         }
 
         // Set canvasGroup.blocksRaycasts to true if needed
@@ -108,6 +114,8 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
         // Call the DisableCutLines method if needed
         DisableCutLines();
+
+        knifeAnimator.SetBool("isGrabbed", false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
