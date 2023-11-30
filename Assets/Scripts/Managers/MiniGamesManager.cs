@@ -135,9 +135,9 @@ public class MiniGamesManager : MonoBehaviour
 
     private void ShowCreditsButton()
     {
-        nextButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        Button nextButtonButton = GetComponent<Button>();
+        nextButtonButton.onClick.RemoveAllListeners();
 
-        //temp
-        nextButton.SetActive(false);
+        nextButtonButton.onClick.AddListener(GameManager.instance.GoToCredit);
     }
 }

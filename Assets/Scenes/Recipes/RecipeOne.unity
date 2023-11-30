@@ -3109,6 +3109,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 534572818}
     - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
+      propertyPath: lightAnimation
+      value: 
+      objectReference: {fileID: 2130976043}
+    - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
       propertyPath: threeStarsImage
       value: 
       objectReference: {fileID: 1304170812}
