@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: -5, y: -5, z: -5, w: -5}
+  m_RaycastPadding: {x: -10, y: -10, z: -10, w: -10}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: -5, y: -5, z: -5, w: -5}
+  m_RaycastPadding: {x: -10, y: -10, z: -10, w: -10}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: -5, y: -5, z: -5, w: -5}
+  m_RaycastPadding: {x: -10, y: -10, z: -10, w: -10}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -628,7 +628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3693147471529668724, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4014238730245326962, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -652,19 +652,19 @@ PrefabInstance:
       objectReference: {fileID: 22872763, guid: 2b461b7f1da6041178a2f5b6b95b9c02, type: 3}
     - target: {fileID: 4793078069737365478, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_RaycastPadding.w
-      value: -5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4793078069737365478, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_RaycastPadding.x
-      value: -5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4793078069737365478, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_RaycastPadding.y
-      value: -5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4793078069737365478, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_RaycastPadding.z
-      value: -5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6521375339563297391, guid: 0a6b3cb2b8c80e64486e27655a3065f0, type: 3}
       propertyPath: m_Name

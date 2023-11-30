@@ -705,9 +705,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1343398118833254977, guid: 2fa78e4c3ef472b4f9de1226728d0ade, type: 3}
+      propertyPath: m_text
+      value: Strength Potion
+      objectReference: {fileID: 0}
     - target: {fileID: 2647686384392120338, guid: 2fa78e4c3ef472b4f9de1226728d0ade, type: 3}
       propertyPath: m_Name
       value: Hud
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986628304832163600, guid: 2fa78e4c3ef472b4f9de1226728d0ade, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7248740230913957161, guid: 2fa78e4c3ef472b4f9de1226728d0ade, type: 3}
+      propertyPath: m_text
+      value: "- Cut all Mandrake's roots. They don't like being cut, be careful.\n\n-
+        Break a Dragon Egg. BUT MAKE SURE THEIR PARENTS AREN'T AROUND, please.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 7452623773228424951, guid: 2fa78e4c3ef472b4f9de1226728d0ade, type: 3}
       propertyPath: m_Pivot.x
@@ -1963,10 +1976,6 @@ PrefabInstance:
     - target: {fileID: 64122563759155694, guid: 16d4f49f10989384996c02874de5341c, type: 3}
       propertyPath: m_Name
       value: BreakBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 64122563759155694, guid: 16d4f49f10989384996c02874de5341c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 210266459945888910, guid: 16d4f49f10989384996c02874de5341c, type: 3}
       propertyPath: m_LocalPosition.x

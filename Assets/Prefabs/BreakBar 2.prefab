@@ -65,6 +65,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8878894533599899976, guid: c9539931916bd45f0b05d7416777836e, type: 3}
+      propertyPath: durationPivot
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878894533599899976, guid: c9539931916bd45f0b05d7416777836e, type: 3}
       propertyPath: stepsEggBreak
       value: 
       objectReference: {fileID: -1286741704, guid: 46ac648cabcd7431b83e8cda1a8687bf, type: 3}

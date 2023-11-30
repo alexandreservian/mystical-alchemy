@@ -18,9 +18,9 @@ public class UiMenu : MonoBehaviour
             .SetEase(ease)
             .OnComplete(() => {
                 footer.DOScale(new Vector3(1,1,1), timeAnimation);
-                buttonPlay.DOScale(new Vector3(1,1,1), timeAnimation)
+                buttonPlay.DOScale(new Vector3(1.5f, 1.5f, 1.5f), timeAnimation)
                     .OnComplete(() => {
-                        buttonCredit.DOScale(new Vector3(1,1,1), timeAnimation);
+                        buttonCredit.DOScale(new Vector3(1.5f,1.5f,1.5f), timeAnimation);
                     });
             });
     }
