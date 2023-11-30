@@ -827,6 +827,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1160562301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2647686384392120338, guid: 2fa78e4c3ef472b4f9de1226728d0ade, type: 3}
+  m_PrefabInstance: {fileID: 1160562297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1238549581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 64122563759155694, guid: 16d4f49f10989384996c02874de5341c, type: 3}
@@ -1771,7 +1776,7 @@ PrefabInstance:
     - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
       propertyPath: hudCanvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1160562301}
     - target: {fileID: 7200058506176976622, guid: 976552f8c629c0c49b83cc5fd5b93ea5, type: 3}
       propertyPath: menuButton
       value: 
