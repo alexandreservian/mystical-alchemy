@@ -27,6 +27,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     [SerializeField] private Animator ingredientAnimator;
 
     private int successCount = 0;
+    private int failCount = 0;
 
     void Start()
     {
@@ -77,6 +78,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             graphicRaycaster.Raycast(pointerEventData, results);
             
             successCount = 0;
+            failCount = 0;
 
             // Iterate through the results and handle interactions with UI elements
             foreach (RaycastResult result in results)
@@ -94,9 +96,13 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
                     MiniGamesManager.OnMiniGameSuccess.Invoke();
                     SoundManager.Instance.PlaySfx("Knife Cut");
                 }
+                else if (result.gameObject.CompareTag("Fail")) 
+                {
+                    failCount++;
+                }
             }
 
-            if (successCount <= 0)
+            if (failCount > 0 && successCount <= 0)
             {
                 MiniGamesManager.OnFail?.Invoke();
             }

@@ -3132,6 +3132,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7420280529475709749, guid: 97939af7890214637bc9d3d772dfcc9c, type: 3}
+      propertyPath: sounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420280529475709749, guid: 97939af7890214637bc9d3d772dfcc9c, type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: Fail Sound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420280529475709749, guid: 97939af7890214637bc9d3d772dfcc9c, type: 3}
+      propertyPath: sounds.Array.data[4].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 91228f8dc0ef81b41a9419348671d4e1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -48,6 +48,7 @@ public class MiniGamesManager : MonoBehaviour
         {
             failCount++;
             lightAnimation.Play("anim_Light_Fail");
+            SoundManager.Instance.PlaySfx("Fail Sound");
             Debug.Log($"Failed {failCount} times");
         };
         OnSuccess += () => SucceedMiniGame();
