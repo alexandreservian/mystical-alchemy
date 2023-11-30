@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BreakBar : MonoBehaviour
 {
@@ -46,11 +47,12 @@ public class BreakBar : MonoBehaviour
     }
 
     private void Update() {
+        var canTouch = InputManager.instance.isPressedTouch && !EventSystem.current.IsPointerOverGameObject();
         var positionPivotY = pivot.transform.position.y;
         var isInsideLimit = positionPivotY <= limitIndicateBreakTop && positionPivotY >= limitIndicateBreakBottom;
         var limitHits = successHits != numberOfHits;
         if (successHits > numberOfHits) return;
-        if (InputManager.instance.isPressedTouch && limitHits) {
+        if (canTouch && limitHits) {
             if(isInsideLimit && canDoAction) {
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
