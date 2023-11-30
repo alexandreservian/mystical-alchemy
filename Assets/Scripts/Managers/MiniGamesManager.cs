@@ -27,8 +27,11 @@ public class MiniGamesManager : MonoBehaviour
     [SerializeField] private Image twoStarsImage;
     [SerializeField] private Image threeStarsImage;
     [SerializeField] private float delayToShowScreenSeconds = 1f;
+
+    [SerializeField] private Animation lightAnimation;
     //Events
     public static Action OnSuccess;
+    public static Action OnMiniGameSuccess;
     public static Action OnFail;
 
     //Counters
@@ -39,13 +42,17 @@ public class MiniGamesManager : MonoBehaviour
     {
         OnFail = null;
         OnSuccess = null;
+        OnMiniGameSuccess = null;
 
         OnFail += () =>
         {
             failCount++;
+            lightAnimation.Play("anim_Light_Fail");
             Debug.Log($"Failed {failCount} times");
         };
         OnSuccess += () => SucceedMiniGame();
+
+        OnMiniGameSuccess += () => lightAnimation.Play("anim_Light_Success");
 
         nextMiniGameButton.onClick.AddListener(() =>
         {
@@ -75,9 +82,11 @@ public class MiniGamesManager : MonoBehaviour
         if (miniGameList.Count <= successCount)
         {
             StartCoroutine(OnEndMiniGameDelayed(delayToShowScreenSeconds));
-            return;
         }
-        ProceedMiniGame();
+        else
+        {
+            ProceedMiniGame();
+        }
     }
 
     private IEnumerator OnEndMiniGameDelayed(float delayToShowScreenSeconds)
@@ -114,15 +123,13 @@ public class MiniGamesManager : MonoBehaviour
         else if (failCount <= twoStarsMaxErrors)
         {
             twoStarsImage.sprite = goldStar;
-            if (PlayerPrefs.GetInt($"Level{SceneManager.GetActiveScene().buildIndex - 3}StarsCount", 0) > 2)
-                return;
-            SaveManager.SaveLevelsStars(SceneManager.GetActiveScene().buildIndex - 3, 2);
+            if (!(PlayerPrefs.GetInt($"Level{SceneManager.GetActiveScene().buildIndex - 3}StarsCount", 0) > 2))
+                SaveManager.SaveLevelsStars(SceneManager.GetActiveScene().buildIndex - 3, 2);
         }
         else
         {
-            if (PlayerPrefs.GetInt($"Level{SceneManager.GetActiveScene().buildIndex - 3}StarsCount", 0) > 1)
-                return;
-            SaveManager.SaveLevelsStars(SceneManager.GetActiveScene().buildIndex - 3, 1);
+            if (!(PlayerPrefs.GetInt($"Level{SceneManager.GetActiveScene().buildIndex - 3}StarsCount", 0) > 1))
+                SaveManager.SaveLevelsStars(SceneManager.GetActiveScene().buildIndex - 3, 1);
         }
     }
 

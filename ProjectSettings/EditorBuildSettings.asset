@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Recipes/RecipeOne.unity
     guid: 6537fb93312ab47e2a2f90e0fabeaebb
+  - enabled: 1
+    path: Assets/Scenes/Recipes/RecipeTwo.unity
+    guid: 51874d9b041ddd1449a2e1cbff1119fb
   m_configObjects: {}

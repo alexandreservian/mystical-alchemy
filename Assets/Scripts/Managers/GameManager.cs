@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
+    public void RecipeTwo()
+    {
+        SceneManager.LoadScene(5);
+    }
+
     public void NextStage()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

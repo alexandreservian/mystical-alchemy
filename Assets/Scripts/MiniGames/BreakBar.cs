@@ -55,6 +55,7 @@ public class BreakBar : MonoBehaviour
                 var newScale = sliderBar.transform.localScale.y + multipleScaleSliderBar;
                 sliderBar.transform.DOScaleY(newScale, durationSliderBar);
                 successHits++;
+                MiniGamesManager.OnMiniGameSuccess.Invoke();
                 egg.transform.DOMoveX(0.2f, 0.35f)
                     .SetLoops(2, LoopType.Yoyo)
                     .SetEase(Ease.InOutSine)

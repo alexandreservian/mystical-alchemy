@@ -26,13 +26,14 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     private Animator knifeAnimator;
     [SerializeField] private Animator ingredientAnimator;
 
-    private float successCount = 0;
-    private float failCount = 0;
+    private int successCount = 0;
 
     void Start()
     {
         eventSystem = GetComponent<EventSystem>();
         knifeAnimator = GetComponent<Animator>();
+
+        DisableCutLines();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -76,7 +77,6 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             graphicRaycaster.Raycast(pointerEventData, results);
             
             successCount = 0;
-            failCount = 0;
 
             // Iterate through the results and handle interactions with UI elements
             foreach (RaycastResult result in results)
@@ -88,32 +88,31 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
                 if (result.gameObject.CompareTag("Success"))
                 {
                     successCount++;
-                    break;
-                }
-                else if(result.gameObject.CompareTag("Fail"))
-                {
-                    failCount++;
+                    cutLines.Remove(result.gameObject);
+                    result.gameObject.GetComponent<AnimateCutIngredient>()?.Animate();
+                    result.gameObject.SetActive(false);
+                    MiniGamesManager.OnMiniGameSuccess.Invoke();
+                    SoundManager.Instance.PlaySfx("Knife Cut");
                 }
             }
-            if (successCount > 0)
-            {
-                SoundManager.Instance.PlaySfx("Knife Cut");
-                ingredientAnimator.enabled = true;
-                MiniGamesManager.OnSuccess.Invoke();
-                enabled = false;
-            }
-            else if(failCount > 0)
+
+            if (successCount <= 0)
             {
                 MiniGamesManager.OnFail?.Invoke();
             }
 
+            if (cutLines.Count <= 0)
+            {
+                if(ingredientAnimator != null) ingredientAnimator.enabled = true;
+                enabled = false;
+                MiniGamesManager.OnSuccess.Invoke();
+            }
+
+            DisableCutLines();
         }
 
         // Set canvasGroup.blocksRaycasts to true if needed
         canvasGroup.blocksRaycasts = true;
-
-        // Call the DisableCutLines method if needed
-        DisableCutLines();
 
         knifeAnimator.SetBool("isGrabbed", false);
     }
@@ -127,9 +126,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         foreach (GameObject cutLine in cutLines)
         {
-            if (cutLine == null) return;
-
-            cutLine.SetActive(true);
+            if (cutLine != null) cutLine.SetActive(true);
         }
     }
 
@@ -137,8 +134,7 @@ public class KnifeController : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         foreach (GameObject cutLine in cutLines)
         {
-            if (cutLine == null) return;
-            cutLine.SetActive(false);
+            if (cutLine != null) cutLine.SetActive(false);
         }
     }
 
