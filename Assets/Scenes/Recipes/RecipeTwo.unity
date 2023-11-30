@@ -3149,6 +3149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakBar
       objectReference: {fileID: 0}
+    - target: {fileID: 64122563759155694, guid: 16d4f49f10989384996c02874de5341c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 210266459945888910, guid: 16d4f49f10989384996c02874de5341c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.838
