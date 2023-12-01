@@ -9,43 +9,47 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void RestartStage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void GoToRecipiesMenu() {
-        SceneManager.LoadScene(3);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(3));
     }
 
     public void RecipeOne() {
-        SceneManager.LoadScene(4);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(4));
     }
 
     public void RecipeTwo()
     {
-        SceneManager.LoadScene(5);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(5));
     }
 
     public void NextStage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void GoToCredit() {
-        SceneManager.LoadScene(2);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(2));
     }
 
     public void GoToMenu() {
-        SceneManager.LoadScene(0);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(0));
     }
 
     public void ResetProgress()
     {
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene(0);
+        StartCoroutine(Transition.Instance.LoadSceneDelayed(0));
     }
 
 }
