@@ -9,6 +9,7 @@ public class MiniGamesManager : MonoBehaviour
 {
     [Header("Canvas")]
     [SerializeField] private Button nextMiniGameButton;
+    [SerializeField] private GameObject nextMiniGameButtonBG;
     [SerializeField] private Button endStageButton;
     [SerializeField] private Button restartStageButton;
     [SerializeField] private Button menuButton;
@@ -58,6 +59,7 @@ public class MiniGamesManager : MonoBehaviour
         {
             miniGameList[successCount -1].SetActive(false);
             miniGameList[successCount].SetActive(true);
+            nextMiniGameButtonBG.SetActive(false);
             nextMiniGameButton.gameObject.SetActive(false);
         });
 
@@ -98,6 +100,7 @@ public class MiniGamesManager : MonoBehaviour
     void ProceedMiniGame()
     {
         nextMiniGameButton.gameObject.SetActive(true);
+        nextMiniGameButtonBG.SetActive(true);
     }
 
     void OnEndMiniGame()
