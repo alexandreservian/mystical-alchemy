@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class Transition : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class Transition : MonoBehaviour
     
     public static Transition Instance { get; private set; }
     private Animator animationCanvas;
+
+    [SerializeField] private Image backgroundImage;
 
 
     private void Awake()
@@ -36,12 +40,18 @@ public class Transition : MonoBehaviour
     private void LoadTransition(UnityEngine.SceneManagement.Scene scene, LoadSceneMode sceneMode)
     {
         Time.timeScale = 1f;
-        animationCanvas.SetBool("isFadeIn", true);
+        StartCoroutine(LoadTransitionDelayed());
+    }
+
+    public IEnumerator LoadTransitionDelayed()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        backgroundImage.DOFade(0f, 0.5f).SetUpdate(true);
     }
 
     public IEnumerator LoadSceneDelayed(int sceneIndex)
     {
-        animationCanvas.SetBool("isFadeIn", false);
+        backgroundImage.DOFade(1f, 0.5f).SetUpdate(true);
         yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(sceneIndex);
     }

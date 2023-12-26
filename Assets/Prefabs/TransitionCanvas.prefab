@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6626020752900959583}
   - component: {fileID: 3576776827693205127}
   - component: {fileID: 494201655245171096}
-  - component: {fileID: 6293791818703641218}
   m_Layer: 5
   m_Name: TransitionCanvas
   m_TagString: Untagged
@@ -117,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62940116cfa761940ad11df64d960981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 3846870824518828138}
 --- !u!225 &494201655245171096
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -125,31 +125,10 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3850886777172989217}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!95 &6293791818703641218
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3850886777172989217}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: da1e9400e1b5d4247a1da551825562db, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8402101998773986530
 GameObject:
   m_ObjectHideFlags: 0
